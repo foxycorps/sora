@@ -95,3 +95,12 @@ mod tests {
         }
     }
 }
+
+/// Switches to the commit specified by the hash.
+pub fn switch_to_commit(commit_hash: &str) -> Result<()> {
+    Command::new("git")
+        .arg("checkout")
+        .arg(commit_hash)
+        .output()?;
+    Ok(())
+}
