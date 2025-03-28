@@ -72,6 +72,7 @@ impl StackBranch {
             parent: None,
             created_at: Utc::now(),
             updated_at: Utc::now(),
+            depth: 0,
         }
     }
 
@@ -130,5 +131,13 @@ impl SolMetadata {
             .find(|stack| stack.has_branch(&branch_name))
             .ok_or_else(|| anyhow!("No stack found for current branch."))?;
         Ok(stack)
+    }
+
+    /// Get stack by name
+    pub fn get_stack(&self, name: &str) -> Result<&Stack> {
+        self.stacks
+            .iter()
+            .find(|stack| stack.name == name)
+            .ok_or_else(|| anyhow!("Stack not found"))
     }
 }

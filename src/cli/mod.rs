@@ -8,6 +8,7 @@ pub mod init;
 pub mod log;
 pub mod prev;
 pub mod next;
+pub mod goto;
 
 pub trait Run {
     async fn run(&self) -> Result<()>;
@@ -21,6 +22,7 @@ impl Run for Cmd {
             Cmd::Prev(prev) => prev.run().await,
             Cmd::Log(log) => log.run().await,
             Cmd::Next(next) => next.run().await,
+            Cmd::Goto(goto) => goto.run().await,
         }
     }
 }

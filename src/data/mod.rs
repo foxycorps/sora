@@ -27,6 +27,7 @@ pub struct StackBranch {
     pub parent: Option<String>,   // Name of the parent branch, if any
     created_at: DateTime<Utc>,
     updated_at: DateTime<Utc>,
+    pub depth: u8,
 }
 
 /// Status of a branch within the stack.

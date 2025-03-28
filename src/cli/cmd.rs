@@ -21,4 +21,8 @@ pub enum Cmd {
     /// Navigate to the next branch in the stack
     #[clap(alias = "n")]
     Next(crate::cli::next::Next),
+
+    /// Navigate to a branch, stack, or commit
+    #[clap(alias = "g")]
+    Goto(crate::cli::goto::Goto),
 }
